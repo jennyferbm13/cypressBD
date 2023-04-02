@@ -1,6 +1,6 @@
 //se quita lo anonimo para que lea el id en los otros it
-describe("Probando  status", function () {
-  it("Crear empleado", () => {
+describe("Probando  status", () => {
+  it("Crear empleado", function () {
     cy.request({
       url: "employees",
       method: "POST",
@@ -19,21 +19,20 @@ describe("Probando  status", function () {
       });
   });
 
-  it("validar que se cree en la bd", () => {
+  it("validar que se cree en la bd", function () {
     cy.request("GET", "employees").then((response) => {
       expect(response.body[response.body.length - 1].first_name).to.eq("Diego"); //validando que el ultimo registro que cree sea ese
     });
-    /*
     //otra forma
     cy.request({
       url: `employees/${this.id}`,
       method: "GET",
     }).then((response) => {
       expect(response.body.first_name).to.eq("Diego"); //validando que el ultimo registro que cree sea ese
-    });*/
+    });
   });
 
-  it("moodificar usuario creado", () => {
+  it("moodificar usuario creado", function () {
     cy.request({
       url: `employees/${this.id}`,
       method: "PUT",
@@ -49,7 +48,7 @@ describe("Probando  status", function () {
     });
   });
 
-  it("borrar usuario creado", () => {
+  it("borrar usuario creado", function () {
     cy.request({
       url: `employees/${this.id}`,
       method: "DELETE",
