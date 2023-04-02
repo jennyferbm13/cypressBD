@@ -1,14 +1,14 @@
 const { defineConfig } = require("cypress");
 const mysql = require("mysql");
 function queryTestDB(query) {
-  const connection = mysql.createConnection(config.env.db);
-  /*
+  //const connection = mysql.createConnection(config.env.db);
+
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "*******",
     database: "MiDataBase",
-  });*/
+  });
   connection.connect();
 
   return new Promise((resolve, reject) => {
